@@ -1,41 +1,20 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import SignupForm from "../components/signupForm";
-import { NumberTicker } from "../components/magicui/number-ticker";
+
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Menu } from "lucide-react";
+
+import { MarqueeDemo } from "../components/userTestimonials";
+import ROICalculator from "../components/roiCalculator";
+import SignupForm from "../components/signupForm";
+import Navbar from "../components/navbar";
+import { BlurFade } from "../components/magicui/blur-fade";
+import Image from 'next/image';
 
 export default function Home() {
   // Modal state
   const [modalOpen, setModalOpen] = useState(false);
-
-  // ROI Calculator states
-  const [shipmentVolume, setShipmentVolume] = useState<number>(0);
-  const [complianceCost, setComplianceCost] = useState<number>(0);
-  const [clearanceTime, setClearanceTime] = useState<number>(0);
-
-  const annualComplianceCost = shipmentVolume * complianceCost;
-  const potentialSavings = annualComplianceCost * 0.63;
-  const daysShaved = clearanceTime * 0.63;
-
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
-
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement).value;
-
-    // Replace with PostHog capture or other analytics if needed
-    console.log("Waitlist signup:", email);
-    alert(`Thanks for joining, ${email}!`);
-    closeModal();
-  };
 
   // Smooth Scroll for Anchor Links
   useEffect(() => {
@@ -56,75 +35,8 @@ export default function Home() {
   return (
     <>
       {/* NAVBAR */}
-      <nav className="flex items-center justify-between px-6 py-4 shadow-sm bg-background">
-        {/* Logo */}
-        <div className="text-lg font-bold text-primary">ComplianceAI</div>
+      <Navbar openModal={openModal} />
 
-        {/* Desktop Navigation Links */}
-        <ul className="hidden md:flex space-x-6 text-foreground">
-          <li>
-            <a href="#hero" className="hover:text-primary">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#value-props" className="hover:text-primary">
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="#roi-calculator" className="hover:text-primary">
-              ROI Calculator
-            </a>
-          </li>
-          <li>
-            <a href="#testimonials" className="hover:text-primary">
-              Testimonials
-            </a>
-          </li>
-        </ul>
-
-        {/* Desktop Action Button */}
-        <div className="hidden md:block">
-          <Button variant="outline" onClick={openModal}>
-            Get Early Access
-          </Button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className="md:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="p-2">
-                <Menu className="w-6 h-6" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48 bg-background text-foreground">
-              <DropdownMenuItem asChild>
-                <a href="#hero">Home</a>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <a href="#value-props">Features</a>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <a href="#roi-calculator">ROI Calculator</a>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <a href="#testimonials">Testimonials</a>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Button
-                  variant="outline"
-                  className="w-full mt-2"
-                  onClick={openModal}
-                >
-                  Get Early Access
-                </Button>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </nav>
 
       {/* HERO SECTION */}
       <section
@@ -132,215 +44,200 @@ export default function Home() {
         className="bg-background text-foreground py-12 md:py-20"
       >
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-6">
-          <div className="md:w-1/2 flex flex-col justify-center">
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
-              Transform Compliance Into Your Competitive Edge
+          <div className="md:w-1/2 flex flex-col justify-center order-2 md:order-1">
+            <h1 className="scroll-m-20 text-5xl font-medium tracking-tight lg:text-6xl mb-4">
+              End Customs Delays and Slash Compliance Costs
             </h1>
             <p className="leading-7 mb-6">
-              Automate customs, VAT, and dual-use controls so you can ship faster,
-              cut costs, and scale securely—without the headaches.
+              We’re building the automation SMEs need to ship faster, save more, and scale without the stress.
             </p>
             <Button variant="default" onClick={openModal}>
               Get Early Access →
             </Button>
+            <p className="leading-7 mt-4 text-muted-foreground">
+              Tired of 30+ day delays and unexpected surcharges? Join us.
+            </p>
           </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img
-              src="/assets/placeholder-hero.png"
-              alt="Hero Screenshot Placeholder"
-              className="rounded-lg shadow-lg w-full max-w-md"
-            />
+          <div className="md:w-1/2 flex justify-center order-1 md:order-2">
+            <BlurFade duration={1.0} delay={0.0} inView>
+              <Image
+                src="/assets/placeholder-hero.png"
+                alt="Hero Screenshot Placeholder"
+                className="rounded-lg shadow-lg w-full max-w-md"
+                width={1200} // Set appropriate width
+                height={800} // Set appropriate height
+              />
+            </BlurFade>
           </div>
         </div>
+
       </section>
 
       {/* VALUE PROPOSITIONS */}
-      <section id="value-props" className="bg-background text-foreground py-12">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Value Prop 1 */}
-          <div className="flex flex-col items-start p-6 border border-border/40 rounded">
-            <img
-              src="/assets/placeholder-valueprop1.png"
-              alt="Value Prop 1"
-              className="mb-4 w-full object-cover rounded"
-            />
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
-              Cut Your Clearance Times by 63%
-            </h3>
-            <p className="leading-7">
-              No more 30+ day customs delays. Our AI-driven platform auto-classifies
-              TARIC/NOGA codes with 94% accuracy and slashes clearance times to mere
-              days.
-            </p>
-          </div>
-
-          {/* Value Prop 2 */}
-          <div className="flex flex-col items-start p-6 border border-border/40 rounded">
-            <img
-              src="/assets/placeholder-valueprop2.png"
-              alt="Value Prop 2"
-              className="mb-4 w-full object-cover rounded"
-            />
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
-              Save Up to €280K Annually
-            </h3>
-            <p className="leading-7 mb-4">
-              Reduce penalties, manual overhead, and carbon taxes with an all-in-one
-              compliance matrix that integrates with EU authorities.
-            </p>
-            <NumberTicker
-              value={100}
-              className="text-8xl font-medium tracking-tighter text-foreground"
-            />
-          </div>
-
-          {/* Value Prop 3 */}
-          <div className="flex flex-col items-start p-6 border border-border/40 rounded">
-            <img
-              src="/assets/placeholder-valueprop3.png"
-              alt="Value Prop 3"
-              className="mb-4 w-full object-cover rounded"
-            />
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
-              Stay Secure &amp; Scalable
-            </h3>
-            <p className="leading-7">
-              Air-gapped AI for dual-use exports. Quantum-proof payment routing.
-              GDPR-compliant data handling from day one.
-            </p>
+      <section id="features" className="bg-background text-foreground py-12">
+        <div className="container mx-auto px-6">
+          <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
+            Your Compliance Pain, Solved
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="flex flex-col-reverse md:flex-col items-start p-6 border border-border/40 rounded">
+              <div className="order-2 md:order-1">
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
+                  End 30+ Day Delays
+                </h3>
+                <p className="leading-7 mb-4">
+                  Tired of shipments stuck in customs limbo? We’re targeting a 63% cut in clearance times.
+                </p>
+              </div>
+              <div className="order-1 md:order-2 w-full">
+                <Image src="/assets/placeholder-valueprop1.png" alt="Faster Clearance" className="mb-4 w-full object-cover rounded" width={800} height={600} />
+              </div>
+            </div>
+            <div className="flex flex-col-reverse md:flex-col items-start p-6 border border-border/40 rounded">
+              <div className="order-2 md:order-1">
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
+                  Stop Costly Surcharges
+                </h3>
+                <p className="leading-7 mb-4">
+                  A €220K penalty stings. We’re building automation to catch errors before they hit.
+                </p>
+              </div>
+              <div className="order-1 md:order-2 w-full">
+                <Image src="/assets/placeholder-valueprop2.png" alt="Cost Savings" className="mb-4 w-full object-cover rounded" width={800} height={600} />
+              </div>
+            </div>
+            <div className="flex flex-col-reverse md:flex-col items-start p-6 border border-border/40 rounded">
+              <div className="order-2 md:order-1">
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
+                  Ditch Manual Chaos
+                </h3>
+                <p className="leading-7 mb-4">
+                  Spreadsheets eating your week? We’re designing a smarter way to manage compliance.
+                </p>
+              </div>
+              <div className="order-1 md:order-2 w-full">
+                <Image src="/assets/placeholder-valueprop3.png" alt="Manual Work" className="mb-4 w-full object-cover rounded" width={800} height={600} />
+              </div>
+            </div>
+            <div className="flex flex-col-reverse md:flex-col items-start p-6 border border-border/40 rounded">
+              <div className="order-2 md:order-1">
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
+                  Scale Without Stress
+                </h3>
+                <p className="leading-7 mb-4">
+                  Growth shouldn’t mean compliance nightmares. We’re crafting a scalable solution.
+                </p>
+              </div>
+              <div className="order-1 md:order-2 w-full">
+                <Image src="/assets/placeholder-valueprop3.png" alt="Scalability" className="mb-4 w-full object-cover rounded" width={800} height={600} />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ROI CALCULATOR */}
-      <section id="roi-calculator" className="bg-background text-foreground py-16 px-6">
-        <h2 className="text-3xl font-bold mb-4 text-center">ROI Calculator</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div>
-            <label htmlFor="shipmentVolume" className="block font-medium mb-2">Annual Shipment Volume</label>
-            <input
-              type="number"
-              id="shipmentVolume"
-              value={shipmentVolume || ""}
-              onChange={(e) => setShipmentVolume(parseFloat(e.target.value) || 0)}
-              className="w-full rounded border border-border bg-background/50 px-3 py-2 text-foreground"
-            />
-          </div>
-          <div>
-            <label htmlFor="complianceCost" className="block font-medium mb-2">Avg Compliance Cost (€) / Shipment</label>
-            <input
-              type="number"
-              id="complianceCost"
-              value={complianceCost || ""}
-              onChange={(e) => setComplianceCost(parseFloat(e.target.value) || 0)}
-              className="w-full rounded border border-border bg-background/50 px-3 py-2 text-foreground"
-            />
-          </div>
-          <div>
-            <label htmlFor="clearanceTime" className="block font-medium mb-2">Current Clearance Time (days)</label>
-            <input
-              type="number"
-              id="clearanceTime"
-              value={clearanceTime || ""}
-              onChange={(e) => setClearanceTime(parseFloat(e.target.value) || 0)}
-              className="w-full rounded border border-border bg-background/50 px-3 py-2 text-foreground"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-          <div className="p-4 border border-border/40 rounded">
-            <strong>Annual Compliance Cost:</strong>
-            <div className="mt-1 text-lg">€{annualComplianceCost.toFixed(2)}</div>
-          </div>
-          <div className="p-4 border border-border/40 rounded">
-            <strong>Potential Annual Savings (63%):</strong>
-            <div className="mt-1 text-lg">€{potentialSavings.toFixed(2)}</div>
-          </div>
-          <div className="p-4 border border-border/40 rounded">
-            <strong>Days Shaved (63%):</strong>
-            <div className="mt-1 text-lg">{daysShaved.toFixed(1)} days</div>
-          </div>
+      <section id="roi"
+        className="bg-background text-foreground py-12"
+      >
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-1 gap-8">
+          <ROICalculator/>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section
-        id="testimonials"
-        className="bg-background text-foreground py-12"
-      >
+      <section id="testimonials" className="bg-background text-foreground py-12">
         <div className="container mx-auto px-6">
-          <h2 className="scroll-m-20 text-3xl font-bold tracking-tight mb-6">
-            Success Stories
+        <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
+            Why Compliance Sucks (And Why We’re Fixing It)
           </h2>
-          <div className="space-y-8">
-            <div className="border border-border/40 p-6 rounded">
-              <p className="leading-7 italic mb-2">
-                “We used to budget 6 weeks for shipping to customers in the Baltics.
-                Now it’s down to under 10 days—and we haven’t missed a single filing.”
-              </p>
-              <div className="text-sm font-medium text-right">
-                — Anna, COO at GreenSustain AB
-              </div>
-            </div>
-            <div className="border border-border/40 p-6 rounded">
-              <p className="leading-7 italic mb-2">
-                “We saved €200K in compliance overhead and doubled our cross-border
-                shipments in Q1 alone.”
-              </p>
-              <div className="text-sm font-medium text-right">
-                — Tomas, CFO at Baltic Machines
-              </div>
-            </div>
+          <MarqueeDemo />
+          <div className="mt-6 text-center">
+            <Button variant="outline" onClick={openModal}>Join the Waitlist</Button>
           </div>
         </div>
       </section>
 
+      {/* WHY JOIN? */}
+      <section id="why-join" className="bg-background text-foreground py-12">
+  <div className="container mx-auto px-6 text-center">
+  <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-2 text-left">
+      Why Join VelocityCompliance Now?
+    </h2>
+    <p className="leading-7 mb-6 mx-auto tracking-tight text-left lg:pr-94">
+      We’re not just another tool—we’re solving the compliance chaos that’s holding SMEs back. Join our waitlist to get in early and help us build what you need.
+    </p>
+    <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 tracking-tight text-left">
+      <li className="p-6 border border-border/40 rounded-lg">
+        <h3 className="text-2xl font-semibold mb-2 tracking-tight">Early Access</h3>
+        <p className="tracking-tight text-s/2">Be the first to try our platform when it launches.</p>
+      </li>
+      <li className="p-6 border border-border/40 rounded-lg">
+        <h3 className="text-2xl font-semibold mb-2 tracking-tight">Shape the Future</h3>
+        <p className="tracking-tight text-s/2">Your feedback will define how we tackle your pain points.</p>
+      </li>
+      <li className="p-6 border border-border/40 rounded-lg">
+        <h3 className="text-2xl font-semibold mb-2 tracking-tight">Exclusive Perks</h3>
+        <p className="tracking-tight text-s/2">First 100 sign-ups get 20% off year one + a free consultation.</p>
+      </li>
+    </ul>
+    <Button variant="default" onClick={openModal}>Join the Waitlist</Button>
+  </div>
+</section>
+
       {/* FOOTER */}
       <footer className="bg-background text-foreground py-8 border-t border-border/40">
-        <div className="container mx-auto px-6 text-center">
-          <p>© 2025. Designed in Sweden, for the world.</p>
-          <p className="mt-2 space-x-4">
-            <a href="#hero" className="hover:text-primary">
-              Home
-            </a>
-            <a href="#value-props" className="hover:text-primary">
-              Features
-            </a>
-            <a href="#roi-calculator" className="hover:text-primary">
-              ROI Calculator
-            </a>
-            <a href="#testimonials" className="hover:text-primary">
-              Testimonials
-            </a>
-          </p>
+        <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-8">
+          <div className="flex flex-col space-y-2">
+            <a href="#hero" className="hover:text-primary">Home</a>
+            <a href="#features" className="hover:text-primary">Features</a>
+            <a href="#roi" className="hover:text-primary">ROI Calculator</a>
+            <a href="#testimonials" className="hover:text-primary">Why Compliance?</a>
+            <a href="mailto:info@velocitycompliance.com" className="hover:text-primary">Contact Us</a>
+            
+            <a href="/privacy" className="hover:text-primary text-xs  mt-8 color dark:text-zinc-600">Privacy Policy</a>
+          </div>
+          <div className="flex flex-col justify-between h-auto">
+            <div className="text-lg font-semibold text-primary w-auto lg:text-right md:text-left">
+              VelocityCompliance
+            </div>
+            <div className="text-sm mt-6 lg:mt-auto">
+              © 2025. Designed in Sweden, for the world.
+            </div>
+          </div>
         </div>
       </footer>
 
       {/* MODAL */}
-      {modalOpen && (
-        <div
-          id="modalOverlay"
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
-          onClick={closeModal}
-        >
+      <div className="py-12">
+
+        {modalOpen && (
           <div
-            className="bg-background text-foreground rounded shadow-lg w-full max-w-md p-6 relative"
-            onClick={(e) => e.stopPropagation()} // Prevent inside clicks from closing
+            id="modalOverlay"
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+            onClick={closeModal}
           >
-            <button
-              className="absolute top-3 right-3 text-foreground hover:text-primary text-2xl"
-              onClick={closeModal}
+            <div
+              className="bg-background text-foreground rounded-lg shadow-lg w-full max-w-md p-6 relative"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
             >
-              &times;
-            </button>
-            <h2 className="scroll-m-20 text-2xl font-bold mb-4">
-              Join the Waitlist
-            </h2>
-            <SignupForm onSuccess={closeModal} />
+              <button
+                className="absolute top-3 right-3 text-foreground hover:text-primary text-2xl"
+                onClick={closeModal}
+              >
+                &times;
+              </button>
+              <h2 className="text-2xl font-bold mb-2 text-left">
+                Join the Waitlist for Early Access
+              </h2>
+              <p className="text-sm text-muted-foreground text-left mb-8">
+                Be the first to transform your compliance process.
+              </p>
+              <SignupForm onSuccess={closeModal} />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }
