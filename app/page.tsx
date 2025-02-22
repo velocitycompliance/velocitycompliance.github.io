@@ -40,7 +40,7 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section
-        id="hero"
+        id="home"
         className="bg-background text-foreground py-12 md:py-20"
       >
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-6">
@@ -51,7 +51,7 @@ export default function Home() {
             <p className="leading-7 mb-8 text-xl dark:text-zinc-300">
               We’re building the automation SMEs need to ship faster, save more, and scale without the stress.
             </p>
-            <Button variant="default" onClick={openModal}>
+            <Button size="lg" variant="default" onClick={openModal}>
               Get Early Access →
             </Button>
             <p className="leading-7 mt-4 text-muted-foreground">
@@ -79,7 +79,7 @@ export default function Home() {
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Your Compliance Pain, Solved
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="flex flex-col-reverse md:flex-col items-start p-6 border border-border/40 rounded">
               <div className="order-2 md:order-1">
                 <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
@@ -139,63 +139,63 @@ export default function Home() {
       {/* ROI CALCULATOR */}
       <section id="roi-calculator" className="bg-background text-foreground py-12">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-1 gap-8">
-        <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-4 text-left px-6">
-          See Your Potential Savings
-        </h2>
-          <ROICalculator/>
+          <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-4 text-left px-6">
+            See Your Potential Savings
+          </h2>
+          <ROICalculator />
         </div>
       </section>
 
       {/* TESTIMONIALS */}
       <section id="why-compliance" className="bg-background text-foreground py-12">
         <div className="container mx-auto px-6">
-        <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
+          <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Why Compliance Sucks (And Why We’re Fixing It)
           </h2>
           <MarqueeDemo />
           <div className="mt-6 text-center">
-            <Button variant="outline" onClick={openModal}>Join the Waitlist</Button>
+            <Button size="lg" variant="outline" onClick={openModal}>Join the Waitlist</Button>
           </div>
         </div>
       </section>
 
       {/* WHY JOIN? */}
       <section id="why-join" className="bg-background text-foreground py-12">
-  <div className="container mx-auto px-6 text-center">
-  <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-2 text-left">
-      Why Join VelocityCompliance Now?
-    </h2>
-    <p className="leading-7 mb-6 mx-auto tracking-tight text-left lg:pr-94">
-      We’re not just another tool—we’re solving the compliance chaos that’s holding SMEs back. Join our waitlist to get in early and help us build what you need.
-    </p>
-    <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 tracking-tight text-left">
-      <li className="p-6 border border-border/40 rounded-lg">
-        <h3 className="text-2xl font-semibold mb-2 tracking-tight">Early Access</h3>
-        <p className="tracking-tight text-s/2">Be the first to try our platform when it launches.</p>
-      </li>
-      <li className="p-6 border border-border/40 rounded-lg">
-        <h3 className="text-2xl font-semibold mb-2 tracking-tight">Shape the Future</h3>
-        <p className="tracking-tight text-s/2">Your feedback will define how we tackle your pain points.</p>
-      </li>
-      <li className="p-6 border border-border/40 rounded-lg">
-        <h3 className="text-2xl font-semibold mb-2 tracking-tight">Exclusive Perks</h3>
-        <p className="tracking-tight text-s/2">First 100 sign-ups get 20% off year one + a free consultation.</p>
-      </li>
-    </ul>
-    <Button variant="default" onClick={openModal}>Join the Waitlist</Button>
-  </div>
-</section>
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-2 text-left">
+            Why Join VelocityCompliance Now?
+          </h2>
+          <p className="leading-7 mb-6 mx-auto tracking-tight text-left lg:pr-94">
+            We’re not just another tool—we’re solving the compliance chaos that’s holding SMEs back. Join our waitlist to get in early and help us build what you need.
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 tracking-tight text-left">
+            <li className="p-6 border border-border/40 rounded-lg">
+              <h3 className="text-2xl font-semibold mb-2 tracking-tight">Early Access</h3>
+              <p className="tracking-tight text-s/2">Be the first to try our platform when it launches.</p>
+            </li>
+            <li className="p-6 border border-border/40 rounded-lg">
+              <h3 className="text-2xl font-semibold mb-2 tracking-tight">Shape the Future</h3>
+              <p className="tracking-tight text-s/2">Your feedback will define how we tackle your pain points.</p>
+            </li>
+            <li className="p-6 border border-border/40 rounded-lg">
+              <h3 className="text-2xl font-semibold mb-2 tracking-tight">Exclusive Perks</h3>
+              <p className="tracking-tight text-s/2">First 100 sign-ups get 20% off year one + a free consultation.</p>
+            </li>
+          </ul>
+          <Button size="lg" onClick={openModal}>Join the Waitlist</Button>
+        </div>
+      </section>
 
       {/* FOOTER */}
       <footer className="bg-background text-foreground py-8 border-t border-border/40">
         <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-8">
           <div className="flex flex-col space-y-2">
-            <a href="#hero" className="hover:text-primary">Home</a>
+            <a href="#home" className="hover:text-primary">Home</a>
             <a href="#features" className="hover:text-primary">Features</a>
             <a href="#roi-calculator" className="hover:text-primary">ROI Calculator</a>
             <a href="#why-compliance" className="hover:text-primary">Why Compliance?</a>
             <a href="mailto:velocitycomplianceofficial@gmail.com" className="hover:text-primary">Contact Us</a>
-            
+
             <a href="/privacy" className="hover:text-primary text-xs  mt-8 color dark:text-zinc-600">Privacy Policy</a>
           </div>
           <div className="flex flex-col justify-between h-auto">

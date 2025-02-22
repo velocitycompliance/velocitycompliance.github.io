@@ -14,7 +14,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
   return (
-    <nav className="flex items-center justify-between px-6 py-4 shadow-sm bg-background">
+    <nav className="flex items-center justify-between px-6 py-4 shadow-sm bg-background sticky top-0 z-50 border-b-1 border-zinc-900">
       {/* Logo */}
       <div className="text-lg font-semibold text-primary">
         VelocityCompliance
@@ -46,13 +46,13 @@ const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="p-2">
-              <Menu className="w-6 h-6" />
+              <Menu className="w-8 h-8" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-48 bg-background text-foreground">
+          <DropdownMenuContent className="w-screen bg-background text-foreground">
             {["Home", "Features", "ROI Calculator", "Why Compliance"].map(
               (item, index) => (
-                <DropdownMenuItem asChild key={index}>
+                <DropdownMenuItem className="text-xl p-4" asChild key={index}>
                   <a href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}>
                     {item}
                   </a>
@@ -61,6 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
             )}
             <DropdownMenuItem>
               <Button
+                size="lg"
                 variant="outline"
                 className="w-full mt-2"
                 onClick={openModal}
