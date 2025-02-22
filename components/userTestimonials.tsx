@@ -6,25 +6,37 @@ const reviews = [
     name: "Anonymous SME Owner",
     username: "Cross-Border Shipper",
     body: "Customs delays cost me €50K last quarter alone. I need a faster way.",
-    Image: "https://avatar.vercel.sh/sme1",
+    Image: "/assets/face-1.jpg",
   },
   {
     name: "Anonymous Exporter",
     username: "EU Trader",
     body: "Manual HS code checks take hours—hours I don’t have.",
-    Image: "https://avatar.vercel.sh/exporter1",
+    Image: "/assets/face-2.jpg",
   },
   {
     name: "Anonymous Logistics Lead",
     username: "Global Mover",
     body: "A €220K surcharge hit us out of nowhere. Compliance shouldn’t be this risky.",
-    Image: "https://avatar.vercel.sh/logistics1",
+    Image: "/assets/face-3.png",
   },
   {
     name: "Anonymous Founder",
     username: "Startup Hustler",
     body: "I’d kill for a tool that cuts my clearance times in half.",
-    Image: "https://avatar.vercel.sh/founder1",
+    Image: "/assets/face-4.png",
+  },
+  {
+    name: "Anonymous CFO",
+    username: "Freight Optimizer",
+    body: "We lost €20K last year to compliance penalties. I need certainty, not surprises.",
+    Image: "/assets/face-5.png",
+  },
+  {
+    name: "Anonymous Operations Manager",
+    username: "Supply Chain Veteran",
+    body: "Chasing down documents and manual entries waste my team's time every day.",
+    Image: "/assets/face-6.png",
   },
 ];
 
@@ -49,7 +61,7 @@ const ReviewCard = ({
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        "dark:border-zinc-100/[.1] dark:bg-zinc-500/[.10] dark:hover:bg-zinc-500/[.25]",
       )}
     >
       <div className="flex flex-row items-center gap-2">

@@ -45,10 +45,10 @@ export default function Home() {
       >
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-6">
           <div className="md:w-1/2 flex flex-col justify-center order-2 md:order-1">
-            <h1 className="scroll-m-20 text-5xl font-medium tracking-tight lg:text-6xl mb-4">
+            <h1 className="scroll-m-20 text-5xl font-medium tracking-tight lg:text-6xl mb-6">
               End Customs Delays and Slash Compliance Costs
             </h1>
-            <p className="leading-7 mb-6">
+            <p className="leading-7 mb-8 text-xl dark:text-zinc-300">
               We’re building the automation SMEs need to ship faster, save more, and scale without the stress.
             </p>
             <Button variant="default" onClick={openModal}>
@@ -137,16 +137,17 @@ export default function Home() {
       </section>
 
       {/* ROI CALCULATOR */}
-      <section id="roi"
-        className="bg-background text-foreground py-12"
-      >
+      <section id="roi-calculator" className="bg-background text-foreground py-12">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-1 gap-8">
+        <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-4 text-left px-6">
+          See Your Potential Savings
+        </h2>
           <ROICalculator/>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section id="testimonials" className="bg-background text-foreground py-12">
+      <section id="why-compliance" className="bg-background text-foreground py-12">
         <div className="container mx-auto px-6">
         <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Why Compliance Sucks (And Why We’re Fixing It)
@@ -191,9 +192,9 @@ export default function Home() {
           <div className="flex flex-col space-y-2">
             <a href="#hero" className="hover:text-primary">Home</a>
             <a href="#features" className="hover:text-primary">Features</a>
-            <a href="#roi" className="hover:text-primary">ROI Calculator</a>
-            <a href="#testimonials" className="hover:text-primary">Why Compliance?</a>
-            <a href="mailto:info@velocitycompliance.com" className="hover:text-primary">Contact Us</a>
+            <a href="#roi-calculator" className="hover:text-primary">ROI Calculator</a>
+            <a href="#why-compliance" className="hover:text-primary">Why Compliance?</a>
+            <a href="mailto:velocitycomplianceofficial@gmail.com" className="hover:text-primary">Contact Us</a>
             
             <a href="/privacy" className="hover:text-primary text-xs  mt-8 color dark:text-zinc-600">Privacy Policy</a>
           </div>
@@ -202,7 +203,7 @@ export default function Home() {
               VelocityCompliance
             </div>
             <div className="text-sm mt-6 lg:mt-auto">
-              © 2025. Designed in Sweden, for the world.
+              © 2025. Designed in Sweden, for the world 🌍.
             </div>
           </div>
         </div>

@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
 
       {/* Desktop Navigation Links */}
       <ul className="hidden md:flex space-x-6 text-foreground">
-        {["Home", "Features", "ROI Calculator", "Why Compliance?"].map((item, index) => (
+        {["Home", "Features", "ROI Calculator", "Why Compliance"].map((item, index) => (
           <li key={index}>
             <a
               href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-48 bg-background text-foreground">
-            {["Home", "Features", "ROI Calculator", "Why Compliance?"].map(
+            {["Home", "Features", "ROI Calculator", "Why Compliance"].map(
               (item, index) => (
                 <DropdownMenuItem asChild key={index}>
                   <a href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}>
