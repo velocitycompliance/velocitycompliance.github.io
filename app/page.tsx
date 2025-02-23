@@ -155,30 +155,33 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section id="why-compliance" className="text-foreground py-12">
-        <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden">
-          <AnimatedGridPattern
-            numSquares={70}
-            maxOpacity={0.15}
-            duration={0.5}
-            repeatDelay={0.5}
-            className={cn(
-              "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-              "inset-x-0 inset-y-[-35%] h-[100%] skew-y-10 opacity-30",
-            )}
-          />
+<section id="why-compliance" className="text-foreground py-2">
+  <div className="relative flex min-h-[600px] sm:min-h-[700px] w-full items-center justify-center overflow-visible">
+    <AnimatedGridPattern
+      numSquares={70}
+      maxOpacity={0.15}
+      duration={0.5}
+      repeatDelay={0.5}
+      className={cn(
+        "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
+        "inset-x-0 inset-y-[5%] h-full skew-y-12 opacity-35"
+      )}
+    />
 
-          <div className="container mx-auto px-6">
-            <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
-              Why Compliance Sucks (And Why We’re Fixing It)
-            </h2>
-            <MarqueeDemo />
-            <div className="mt-6 text-center">
-              <Button size="lg" variant="outline" onClick={openModal}>Join the Waitlist</Button>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="container mx-auto px-4 sm:px-6">
+      <h2 className="scroll-m-20 text-3xl sm:text-4xl font-medium tracking-tight mb-6 text-left">
+        Why Compliance Sucks (And Why We’re Fixing It)
+      </h2>
+      <MarqueeDemo />
+      <div className="mt-8 text-center">
+        <Button size="lg" variant="outline" className="z-10 relative" onClick={openModal}>
+          Join the Waitlist
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* WHY JOIN? */}
       <section id="why-join" className="bg-background text-foreground py-12">
