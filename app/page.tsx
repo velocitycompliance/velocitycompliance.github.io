@@ -1,14 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import Image from 'next/image';
 
 import { Button } from "@/components/ui/button";
-
 import { MarqueeDemo } from "../components/userTestimonials";
 import ROICalculator from "../components/roiCalculator";
 import SignupForm from "../components/signupForm";
 import Navbar from "../components/navbar";
 import { BlurFade } from "../components/magicui/blur-fade";
-import Image from 'next/image';
+import { AnimatedGridPattern } from "../components/magicui/animated-grid-pattern";
 
 export default function Home() {
   // Modal state
@@ -58,23 +59,26 @@ export default function Home() {
               Tired of 30+ day delays and unexpected surcharges? Join us.
             </p>
           </div>
-          <div className="md:w-1/2 flex justify-center order-1 md:order-2">
-            <BlurFade duration={1.0} delay={0.0} inView>
-              <Image
-                src="/assets/placeholder-hero.png"
-                alt="Hero Screenshot Placeholder"
-                className="rounded-lg shadow-lg w-full max-w-md"
-                width={1200} // Set appropriate width
-                height={800} // Set appropriate height
-              />
-            </BlurFade>
-          </div>
+          <div className="md:w-1/2 flex justify-center order-1 md:order-2 relative overflow-hidden">
+      <BlurFade duration={1.0} delay={0.0} inView>
+        <div className="relative h-full w-full">
+          <Image
+            src="/assets/placeholder-hero.png"
+            alt="Hero Screenshot Placeholder"
+            className="h-full w-auto object-cover"
+            width={800} // Large width to ensure overflow
+            height={600} // Adjusted for aspect ratio
+          />
+        </div>
+      </BlurFade>
+    </div>
         </div>
 
       </section>
 
       {/* VALUE PROPOSITIONS */}
       <section id="features" className="bg-background text-foreground py-12">
+        
         <div className="container mx-auto px-6">
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Your Compliance Pain, Solved
@@ -99,7 +103,7 @@ export default function Home() {
                   Stop Costly Surcharges
                 </h3>
                 <p className="leading-7 mb-4">
-                  A €220K penalty stings. We’re building automation to catch errors before they hit.
+                  A $220K penalty stings. We’re building automation to catch errors before they hit.
                 </p>
               </div>
               <div className="order-1 md:order-2 w-full">
@@ -129,7 +133,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="order-1 md:order-2 w-full">
-                <Image src="/assets/placeholder-valueprop3.png" alt="Scalability" className="mb-4 w-full object-cover rounded" width={800} height={600} />
+                <Image src="/assets/placeholder-valueprop4.png" alt="Scalability" className="mb-4 w-full object-cover rounded" width={800} height={600} />
               </div>
             </div>
           </div>
@@ -147,7 +151,19 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section id="why-compliance" className="bg-background text-foreground py-12">
+      <section id="why-compliance" className="text-foreground py-12">
+      <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden">
+      <AnimatedGridPattern
+        numSquares={70}
+        maxOpacity={0.15}
+        duration={0.5}
+        repeatDelay={0.5}
+        className={cn(
+          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+          "inset-x-0 inset-y-[-35%] h-[100%] skew-y-10 opacity-30",
+        )}
+      />
+  
         <div className="container mx-auto px-6">
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Why Compliance Sucks (And Why We’re Fixing It)
@@ -156,6 +172,7 @@ export default function Home() {
           <div className="mt-6 text-center">
             <Button size="lg" variant="outline" onClick={openModal}>Join the Waitlist</Button>
           </div>
+        </div>
         </div>
       </section>
 

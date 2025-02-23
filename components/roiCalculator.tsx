@@ -35,7 +35,7 @@ const ROICalculator: React.FC = () => {
             />
           </div>
           <div className="grid w-full items-center gap-1.5">
-            <Label className="text-0.5xl" htmlFor="complianceCost">Avg Compliance Cost (€) / Shipment</Label>
+            <Label className="text-0.5xl" htmlFor="complianceCost">Avg Compliance Cost ($) / Shipment</Label>
             <Input
               textSize = "text-2xl"
               paddingY = "py-6"
@@ -51,11 +51,11 @@ const ROICalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mb-6">
           <div className="p-6 border border-border/40 rounded-lg shadow-md bg-background/50">
             <p className="font-medium text-muted-foreground mb-1 text-0.5xl">Annual Compliance Cost</p>
-            <TypingAnimation className="font-medium text-5xl">{`€${formatNumber(annualComplianceCost)}`}</TypingAnimation>
+            <TypingAnimation className="font-medium text-5xl">{`$${formatNumber(annualComplianceCost)}`}</TypingAnimation>
           </div>
           <div className="p-6 border border-border/40 rounded-lg shadow-md bg-background/50">
             <p className="font-medium text-muted-foreground mb-1 text-0.5xl">Potential Annual Savings (63%)</p>
-            <TypingAnimation className="font-medium text-5xl">{`€${formatNumber(potentialSavings)}`}</TypingAnimation>
+            <TypingAnimation className="font-medium text-5xl">{`$${formatNumber(potentialSavings)}`}</TypingAnimation>
           </div>
         </div>
 
