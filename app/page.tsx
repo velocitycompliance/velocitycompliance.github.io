@@ -62,21 +62,23 @@ export default function Home() {
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/2 flex justify-center order-1 md:order-2 relative overflow-hidden">
+          <div className="md:w-1/2 w-full flex justify-center order-1 md:order-2">
             <BlurFade duration={1.0} delay={0.0} inView>
-              <div className="relative w-full md:h-full">
+              <div className="relative w-full min-h-[250px] md:min-h-0 md:h-full">
                 <Image
                   src="/assets/placeholder-hero.png"
                   alt="Hero Screenshot Placeholder"
                   className="w-full h-auto md:h-full md:w-auto object-cover"
-                  width={800} // For desktop width control
-                  height={600} // Aspect ratio control
+                  width={800}
+                  height={600}
+                  priority // Ensures faster loading on mobile
                 />
               </div>
             </BlurFade>
           </div>
         </div>
       </section>
+
 
       {/* VALUE PROPOSITIONS */}
       <section id="features" className="bg-background text-foreground py-12">
