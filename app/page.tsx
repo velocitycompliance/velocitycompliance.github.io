@@ -45,6 +45,7 @@ export default function Home() {
         className="bg-background text-foreground py-12 md:py-20"
       >
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-6">
+          {/* Text Content */}
           <div className="md:w-1/2 flex flex-col justify-center order-2 md:order-1">
             <h1 className="scroll-m-20 text-5xl font-medium tracking-tight lg:text-6xl mb-6">
               End Customs Delays and Slash Compliance Costs
@@ -59,26 +60,27 @@ export default function Home() {
               Tired of 30+ day delays and unexpected surcharges? Join us.
             </p>
           </div>
-          <div className="md:w-1/2 flex justify-center order-1 md:order-2 relative overflow-hidden">
-      <BlurFade duration={1.0} delay={0.0} inView>
-        <div className="relative h-full w-full">
-          <Image
-            src="/assets/placeholder-hero.png"
-            alt="Hero Screenshot Placeholder"
-            className="h-full w-auto object-cover"
-            width={800} // Large width to ensure overflow
-            height={600} // Adjusted for aspect ratio
-          />
-        </div>
-      </BlurFade>
-    </div>
-        </div>
 
+          {/* Image Section */}
+          <div className="md:w-1/2 flex justify-center order-1 md:order-2 relative overflow-hidden">
+            <BlurFade duration={1.0} delay={0.0} inView>
+              <div className="relative w-full md:h-full">
+                <Image
+                  src="/assets/placeholder-hero.png"
+                  alt="Hero Screenshot Placeholder"
+                  className="w-full h-auto md:h-full md:w-auto object-cover"
+                  width={800} // For desktop width control
+                  height={600} // Aspect ratio control
+                />
+              </div>
+            </BlurFade>
+          </div>
+        </div>
       </section>
 
       {/* VALUE PROPOSITIONS */}
       <section id="features" className="bg-background text-foreground py-12">
-        
+
         <div className="container mx-auto px-6">
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Your Compliance Pain, Solved
@@ -152,27 +154,27 @@ export default function Home() {
 
       {/* TESTIMONIALS */}
       <section id="why-compliance" className="text-foreground py-12">
-      <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden">
-      <AnimatedGridPattern
-        numSquares={70}
-        maxOpacity={0.15}
-        duration={0.5}
-        repeatDelay={0.5}
-        className={cn(
-          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-35%] h-[100%] skew-y-10 opacity-30",
-        )}
-      />
-  
-        <div className="container mx-auto px-6">
-          <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
-            Why Compliance Sucks (And Why We’re Fixing It)
-          </h2>
-          <MarqueeDemo />
-          <div className="mt-6 text-center">
-            <Button size="lg" variant="outline" onClick={openModal}>Join the Waitlist</Button>
+        <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden">
+          <AnimatedGridPattern
+            numSquares={70}
+            maxOpacity={0.15}
+            duration={0.5}
+            repeatDelay={0.5}
+            className={cn(
+              "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+              "inset-x-0 inset-y-[-35%] h-[100%] skew-y-10 opacity-30",
+            )}
+          />
+
+          <div className="container mx-auto px-6">
+            <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
+              Why Compliance Sucks (And Why We’re Fixing It)
+            </h2>
+            <MarqueeDemo />
+            <div className="mt-6 text-center">
+              <Button size="lg" variant="outline" onClick={openModal}>Join the Waitlist</Button>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
