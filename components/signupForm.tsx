@@ -91,7 +91,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         />
 
         {/* Submit Button */}
-        <Button type="submit" className="w-full">
+        <Button size="lg" variant="default" type="submit" className="w-full">
           Join the Waitlist
         </Button>
 

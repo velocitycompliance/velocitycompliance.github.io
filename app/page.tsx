@@ -44,7 +44,7 @@ export default function Home() {
         id="home"
         className="bg-background text-foreground py-12 md:py-20"
       >
-        <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-6">
+        <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-6 lg:px-24 xl:px-40">
           {/* Text Content */}
           <div className="md:w-1/2 flex flex-col justify-center order-2 md:order-1">
             <h1 className="scroll-m-20 text-5xl font-medium tracking-tight lg:text-6xl mb-6">
@@ -83,7 +83,7 @@ export default function Home() {
       {/* VALUE PROPOSITIONS */}
       <section id="features" className="bg-background text-foreground py-12">
 
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-40">
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-6 text-left">
             Your Compliance Pain, Solved
           </h2>
@@ -146,7 +146,7 @@ export default function Home() {
 
       {/* ROI CALCULATOR */}
       <section id="roi-calculator" className="bg-background text-foreground py-12">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-1 gap-8">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 md:px-12 lg:px-24 xl:px-40">
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-4 text-left px-6">
             See Your Potential Savings
           </h2>
@@ -156,7 +156,7 @@ export default function Home() {
 
       {/* TESTIMONIALS */}
 <section id="why-compliance" className="text-foreground py-2">
-  <div className="relative flex min-h-[600px] sm:min-h-[700px] w-full items-center justify-center overflow-visible">
+  <div className="relative flex min-h-[600px] sm:min-h-[700px] w-full items-center justify-center overflow-visible md:px-12 lg:px-24 xl:px-40">
     <AnimatedGridPattern
       numSquares={70}
       maxOpacity={0.15}
@@ -185,7 +185,7 @@ export default function Home() {
 
       {/* WHY JOIN? */}
       <section id="why-join" className="bg-background text-foreground py-12">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-6 text-center md:px-12 lg:px-24 xl:px-40">
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-2 text-left">
             Why Join VelocityCompliance Now?
           </h2>
@@ -212,7 +212,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="bg-background text-foreground py-8 border-t border-border/40">
-        <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-8">
+        <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-8 md:px-12 lg:px-24 xl:px-40">
           <div className="flex flex-col space-y-2">
             <a href="#home" className="hover:text-primary">Home</a>
             <a href="#features" className="hover:text-primary">Features</a>

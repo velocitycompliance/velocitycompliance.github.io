@@ -14,7 +14,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
   return (
-    <nav className="flex items-center justify-between px-6 py-4 shadow-sm bg-background sticky top-0 z-50 border-b-1 border-zinc-900">
+    <nav className="flex items-center justify-between px-6 py-4 shadow-sm bg-background sticky top-0 z-50 border-b-1 border-zinc-900 md:px-12 lg:px-24 xl:px-40">
       {/* Logo */}
       <div className="text-lg font-semibold text-primary">
         VelocityCompliance
