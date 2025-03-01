@@ -58,7 +58,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
-                <Input paddingY = "py-6" textSize='m' placeholder="Enter your email" {...field} />
+                <Input placeholder="Enter your email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -74,15 +74,15 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
               <FormLabel>What’s your biggest compliance challenge?</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value || 'Customs delays'}>
                 <FormControl>
-                  <SelectTrigger textSize="text-m" paddingY="py-6">
-                    <SelectValue textSize="text-m" placeholder="Select a challenge" />
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a challenge" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem textSize="text-m" value="Customs delays">Customs delays</SelectItem>
-                  <SelectItem textSize="text-m" value="High costs">High costs</SelectItem>
-                  <SelectItem textSize="text-m" value="Manual paperwork">Manual paperwork</SelectItem>
-                  <SelectItem textSize="text-m" value="Other">Other</SelectItem>
+                  <SelectItem value="Customs delays">Customs delays</SelectItem>
+                  <SelectItem value="High costs">High costs</SelectItem>
+                  <SelectItem value="Manual paperwork">Manual paperwork</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
