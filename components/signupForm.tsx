@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { usePostHog } from 'posthog-js/react';
@@ -25,26 +25,27 @@ import {
 
 interface SignupFormProps {
   onSuccess: () => void;
+  ctaText?: string;
 }
 
-// ✅ Define form schema with Zod
+// Define form schema with Zod
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
   challenge: z.string().nonempty({ message: "Please select a compliance challenge." }),
 });
 
-export default function SignupForm({ onSuccess }: SignupFormProps) {
+export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" }: SignupFormProps) {
   const posthog = usePostHog();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { email: '', challenge: 'Customs delays' }, // Set default challenge
+    defaultValues: { email: '', challenge: 'Customs delays' },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    posthog?.capture('waitlist_signup', values); // Capture email + challenge
+    posthog?.capture('waitlist_signup', values);
     console.log('Captured:', values);
-    onSuccess(); // Close modal on success
+    onSuccess();
   };
 
   return (
@@ -58,7 +59,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
-                <Input paddingY = "py-6" textSize='m' placeholder="Enter your email" {...field} />
+                <Input paddingY="py-6" textSize="m" placeholder="Enter your email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,7 +93,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
 
         {/* Submit Button */}
         <Button size="lg" variant="default" type="submit" className="w-full">
-          Join the Waitlist
+          {ctaText}
         </Button>
 
         <FormDescription className="text-center text-xs text-muted-foreground line-through ...">

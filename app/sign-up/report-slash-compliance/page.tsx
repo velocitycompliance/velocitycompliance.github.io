@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function StrategicGuide() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function StrategicGuide() {
   return (
     <>
       {/* Back Navigation */}
-      <div className="mt-6 ml-16">
+      <div className="container mt-8 mb-0 gap-8 px-6 lg:px-24 xl:px-40">
         <Button variant="outline" size="lg" onClick={() => router.push("/")}>
           <ArrowLeft className="w-8 h-8" /> Back to Home
         </Button>
@@ -126,6 +127,13 @@ export default function StrategicGuide() {
             <p className="mb-4">
               The key is to keep your eyes on the prize: a more efficient, future-ready customs operation that doesn’t just check boxes but actively advances your larger business goals. With consistent milestones, cross-functional collaboration, and open minds about technology’s potential, these improvements won’t just streamline your shipping—they’ll reshape how you think about trade at a fundamental level.
             </p>
+            <Image
+              src="/assets/chart-3.png"
+              alt="Digital Transformation in Trade"
+              className="mb-4 w-full object-cover rounded"
+              width={800}
+              height={600}
+            />
           </section>
 
           {/* Back to Home Button */}
@@ -141,24 +149,24 @@ export default function StrategicGuide() {
       <footer className="bg-background text-foreground py-8 border-t border-border/40">
         <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-8 md:px-12 lg:px-24 xl:px-40">
           <div className="flex flex-col space-y-2">
-            <a href="/" className="hover:text-primary">
+            <Link href="/" className="hover:text-primary">
               Home
-            </a>
-            <a href="/features" className="hover:text-primary">
+            </Link>
+            <Link href="/features" className="hover:text-primary">
               Features
-            </a>
-            <a href="/roi-calculator" className="hover:text-primary">
+            </Link>
+            <Link href="/roi-calculator" className="hover:text-primary">
               ROI Calculator
-            </a>
-            <a href="/#why-compliance" className="hover:text-primary">
+            </Link>
+            <Link href="/#why-compliance" className="hover:text-primary">
               Why Compliance?
-            </a>
-            <a href="mailto:velocitycomplianceofficial@gmail.com" className="hover:text-primary">
+            </Link>
+            <Link href="mailto:velocitycomplianceofficial@gmail.com" className="hover:text-primary">
               Contact Us
-            </a>
-            <a href="/privacy" className="hover:text-primary text-xs mt-8 dark:text-zinc-600">
+            </Link>
+            <Link href="/privacy" className="hover:text-primary text-xs mt-8 dark:text-zinc-600">
               Privacy Policy
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col justify-between h-auto">
             <div className="text-lg font-semibold text-primary">VelocityCompliance</div>

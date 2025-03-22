@@ -258,7 +258,7 @@ export default function Home() {
               <p className="text-sm text-muted-foreground text-left mb-8">
                 Be the first to transform your compliance process.
               </p>
-              <SignupForm onSuccess={closeModal} />
+              <SignupForm onSuccess={closeModal} ctaText="Join the Waitlist" />
             </div>
           </div>
         )}
