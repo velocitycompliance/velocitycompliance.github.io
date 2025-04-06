@@ -32,7 +32,7 @@ const ReviewCard = ({ Image, name, username, body }: { Image: string; name: stri
 
 export function MarqueeDemo() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-x-hidden py-6 sm:py-8">
+    <div className="relative flex w-full flex-col items-center justify-center overflow-x-hidden py-6 sm:py-8 gap-4">
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />

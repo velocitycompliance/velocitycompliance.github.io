@@ -1,11 +1,9 @@
 import type { NextConfig } from "next";
 
-const repoName = "velocitycompliance.github.io";
-
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: "export",
   images: {
-    unoptimized: true, // Important for next/image when exporting
+    unoptimized: true,
   },
 };
 
