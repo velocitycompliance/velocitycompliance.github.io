@@ -4,7 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import Intro from "./game/page";
+import Intro from "./intro/page";
 
 export default function MiniGamePage() {
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function MiniGamePage() {
         </Button>
       </div>
 
-      <div className="m-8 py-8 mt-12 gap-8 px-6 lg:px-24 xl:px-40">
+      <div >
         <Intro />
       </div>
 
