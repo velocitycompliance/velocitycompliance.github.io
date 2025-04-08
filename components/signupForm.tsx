@@ -4,8 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { usePostHog } from 'posthog-js/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+
 import {
   Select,
   SelectContent,
@@ -13,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import {
   Form,
   FormControl,
@@ -27,10 +31,13 @@ interface SignupFormProps {
   ctaText?: string;
 }
 
-// Define form schema with Zod
+// Updated schema: add `consent`
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
   challenge: z.string().nonempty({ message: "Please select a compliance challenge." }),
+  consent: z.literal(true, {
+    errorMap: () => ({ message: "You must accept the privacy terms." }),
+  }),
 });
 
 export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" }: SignupFormProps) {
@@ -38,11 +45,17 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { email: '', challenge: 'Customs delays' },
+    defaultValues: {
+      email: '',
+      challenge: 'Customs delays'
+    },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    posthog?.capture('waitlist_signup', values);
+    posthog?.capture('waitlist_signup', {
+      email: values.email,
+      challenge: values.challenge,
+    });
     console.log('Captured:', values);
     onSuccess();
   };
@@ -72,7 +85,7 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
           render={({ field }) => (
             <FormItem>
               <FormLabel>What’s your biggest compliance challenge?</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value || 'Customs delays'}>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger textSize="text-m" paddingY="py-6">
                     <SelectValue textSize="text-m" placeholder="Select a challenge" />
@@ -85,6 +98,30 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
                   <SelectItem textSize="text-m" value="Other">Other</SelectItem>
                 </SelectContent>
               </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Consent Checkbox */}
+        <FormField
+          control={form.control}
+          name="consent"
+          render={({ field }) => (
+            <FormItem className="flex items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  id="consent"
+                  checked={field.value}
+                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                />
+              </FormControl>
+              <FormLabel htmlFor="consent" className="text-sm font-normal">
+                I agree to have my email stored and to receive updates as described in the{" "}
+                <a href="/privacy" className="underline" target="_blank" rel="noopener noreferrer">
+                  Privacy Policy
+                </a>.
+              </FormLabel>
               <FormMessage />
             </FormItem>
           )}

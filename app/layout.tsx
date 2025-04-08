@@ -1,6 +1,7 @@
 // app/layout.tsx
 import { ReactNode } from 'react';
-import { PostHogProvider } from './providers'
+import { PostHogProvider } from './providers';
+import CookieConsent from '@/components/cookieConsent';
 import './globals.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -12,9 +13,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="color-scheme" content="dark" />
         <title>VelocityCompliance - The Trade Compliance Platform</title>
       </head>
-      <body className="dark bg-background text-foreground"><PostHogProvider>
-        {children}
-      </PostHogProvider></body>
+      <body className="dark bg-background text-foreground">
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
+        <CookieConsent />
+      </body>
     </html>
   );
 }

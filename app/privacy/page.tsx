@@ -103,9 +103,7 @@ export default function PrivacyPolicy() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">10. International Data Transfers</h2>
       <p className="mb-4">
-        As our operations are based in Europe, and our website is hosted on GitHub Pages, your data may be
-        processed and stored outside of your country of residence. We ensure that appropriate safeguards are in place to
-        comply with applicable data protection laws.
+        As our operations are based in Europe, and our website is hosted on GitHub Pages, your data may be processed and stored outside of your country of residence. GitHub complies with GDPR requirements, including providing appropriate safeguards for international data transfers, such as adherence to the EU-U.S. Data Privacy Framework and using Standard Contractual Clauses where applicable. We ensure that all data processing activities align with applicable data protection laws to safeguard your personal information
       </p>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">11. Changes to This Privacy Policy</h2>
