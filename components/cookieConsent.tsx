@@ -60,8 +60,8 @@ const CookieConsent = () => {
         </CardHeader>
         <CardContent>
           <p className="text-sm">
-            We use cookies to enhance your experience. By clicking “Accept,” you consent to have our cookies stored and to
-            allow our tracking (via PostHog) as described in our{" "}
+            We use cookies to enhance your experience. By clicking “Accept,” you consent to have a cookie stored and to
+            allow our tracking as described in our{" "}
             <a href="/privacy" className="underline" target="_blank" rel="noopener noreferrer">
               Privacy Policy
             </a>.

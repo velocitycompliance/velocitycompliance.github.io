@@ -52,12 +52,24 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    posthog?.capture('waitlist_signup', {
-      email: values.email,
-      challenge: values.challenge,
-    });
-    console.log('Captured:', values);
-    onSuccess();
+    localStorage.setItem("cookieConsent", "true");
+    window.dispatchEvent(new Event("posthogConsentGranted"));
+  
+    const tryCapture = () => {
+      if (window.posthogReady) {
+        posthog?.capture("waitlist_signup", {
+          email: values.email,
+          challenge: values.challenge,
+        });
+        console.log("Captured:", values);
+        onSuccess();
+      } else {
+        // Retry in 100ms (or use a backoff if you want)
+        setTimeout(tryCapture, 100);
+      }
+    };
+  
+    tryCapture(); // Start polling
   };
 
   return (
@@ -111,6 +123,7 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
             <FormItem className="flex items-start space-x-3 space-y-0">
               <FormControl>
                 <Checkbox
+                  className="border-gray-200"
                   id="consent"
                   checked={field.value}
                   onCheckedChange={(checked) => field.onChange(checked === true)}
