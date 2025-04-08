@@ -16,7 +16,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -95,10 +94,6 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
         <Button size="lg" variant="default" type="submit" className="w-full">
           {ctaText}
         </Button>
-
-        <FormDescription className="text-center text-xs text-muted-foreground line-through ...">
-          First 100 sign-ups get a free consultation when we launch.
-        </FormDescription>
       </form>
     </Form>
   );

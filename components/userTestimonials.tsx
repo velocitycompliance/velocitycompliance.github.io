@@ -1,26 +1,33 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "./magicui/marquee";
+import Image from "next/image";
 
 const reviews = [
-  { name: "Anonymous SME Owner", username: "Cross-Border Shipper", body: "Customs delays cost me €50K last quarter alone. I need a faster way.", Image: "/assets/face-1.jpg" },
-  { name: "Anonymous Exporter", username: "EU Trader", body: "Manual HS code checks take hours—hours I don’t have.", Image: "/assets/face-2.jpg" },
-  { name: "Anonymous Logistics Lead", username: "Global Mover", body: "A €220K surcharge hit us out of nowhere. Compliance shouldn’t be this risky.", Image: "/assets/face-3.png" },
-  { name: "Anonymous Founder", username: "Startup Hustler", body: "I’d kill for a tool that cuts my clearance times in half.", Image: "/assets/face-4.png" },
-  { name: "Anonymous CFO", username: "Freight Optimizer", body: "We lost €20K last year to compliance penalties. I need certainty, not surprises.", Image: "/assets/face-5.png" },
-  { name: "Anonymous Operations Manager", username: "Supply Chain Veteran", body: "Chasing down documents and manual entries waste my team's time every day.", Image: "/assets/face-6.png" },
+  { name: "Anonymous SME Owner", username: "Cross-Border Shipper", body: "Customs delays cost me €50K last quarter alone. I need a faster way.", ImageSrc: "/assets/face-1.jpg" },
+  { name: "Anonymous Exporter", username: "EU Trader", body: "Manual HS code checks take hours—hours I don’t have.", ImageSrc: "/assets/face-2.jpg" },
+  { name: "Anonymous Logistics Lead", username: "Global Mover", body: "A €220K surcharge hit us out of nowhere. Compliance shouldn’t be this risky.", ImageSrc: "/assets/face-3.png" },
+  { name: "Anonymous Founder", username: "Startup Hustler", body: "I’d kill for a tool that cuts my clearance times in half.", ImageSrc: "/assets/face-4.png" },
+  { name: "Anonymous CFO", username: "Freight Optimizer", body: "We lost €20K last year to compliance penalties. I need certainty, not surprises.", ImageSrc: "/assets/face-5.png" },
+  { name: "Anonymous Operations Manager", username: "Supply Chain Veteran", body: "Chasing down documents and manual entries waste my team's time every day.", ImageSrc: "/assets/face-6.png" },
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 
-const ReviewCard = ({ Image, name, username, body }: { Image: string; name: string; username: string; body: string }) => (
+const ReviewCard = ({ ImageSrc, name, username, body }: { ImageSrc: string; name: string; username: string; body: string }) => (
   <figure className={cn(
     "relative w-60 sm:w-64 md:w-72 h-full cursor-pointer overflow-hidden rounded-xl border p-4",
     "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
     "dark:border-zinc-100/[.1] dark:bg-zinc-500/[.10] dark:hover:bg-zinc-500/[.25]"
   )}>
     <div className="flex items-center gap-2">
-      <img className="rounded-full" width="32" height="32" alt={name} src={Image} />
+      <Image
+        className="rounded-full"
+        width={32}
+        height={32}
+        alt={name}
+        src={ImageSrc}
+      />
       <div className="flex flex-col">
         <figcaption className="text-sm font-medium dark:text-white">{name}</figcaption>
         <p className="text-xs font-medium dark:text-white/40">{username}</p>

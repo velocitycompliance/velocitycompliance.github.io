@@ -1,10 +1,13 @@
+//component/scenarioContextBar.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Hourglass } from "lucide-react";
 import {
   Terminal,
   AnimatedSpan,
-} from "@/components/magicui/terminal"; // Adjust your import
+} from "@/components/magicui/terminal"; // Adjust your import if needed
 import { Progress } from "@/components/ui/progress";
 
 // Props for scenario bar
@@ -25,6 +28,7 @@ export function ScenarioContextBar({
 }: ScenarioContextBarProps) {
   // Local state for the countdown
   const [timeLeft, setTimeLeft] = useState<number>(60);
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -45,22 +49,24 @@ export function ScenarioContextBar({
     const timer = setInterval(() => {
       const now = Date.now();
       const diffSec = Math.floor((now - gameStartTime) / 1000);
-      const remaining = 120 - diffSec;
+      const remaining = 120 - diffSec; // e.g. 120s total time
+
       if (remaining > 0) {
         setTimeLeft(remaining);
       } else {
         setTimeLeft(0);
-        // Optionally do something when time hits 0
-        // e.g. alert("Time's up!") or router.push("/mini-game/game/timeUp");
+        // 3) Time is up → redirect to /mini-game/add-email
+        clearInterval(timer);
+        router.push("/mini-game/addEmail");
       }
     }, 1000);
 
     // Cleanup interval on unmount
     return () => clearInterval(timer);
-  }, []);
+  }, [router]);
 
   return (
-    <div className="w-full space-y-4 p-4 mb-6 border-b border-border/40">
+    <div className="w-full space-y-4 p-4 mb-8 border-b border-border/40">
       {/* Step Indicator & Manual Progress */}
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium">
@@ -86,8 +92,12 @@ export function ScenarioContextBar({
           ✖ Remember: each misstep adds delays & costs!
         </AnimatedSpan>
 
-        {/* 4) The Countdown in Large Text */}
-        <AnimatedSpan delay={900} className="text-white-400 text-xl font-bold">
+        {/* 4) Time Left with Hourglass Icon */}
+        <AnimatedSpan
+          delay={900}
+          className="text-white-400 text-xl font-bold flex items-center gap-2 mb-4"
+        >
+          <Hourglass className="w-6 h-6 animate-[spin_1s_ease-in-out_infinite]" />
           Time Left: {timeLeft}s
         </AnimatedSpan>
       </Terminal>

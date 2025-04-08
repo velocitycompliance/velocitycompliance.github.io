@@ -65,44 +65,51 @@ export default function ChallengeTwoPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-      <div className="w-full max-w-4xl mb-4">
+    <div className="min-h-screen flex flex-col">
+      {/* Back button */}
+      <div className="mt-8 mb-8 gap-8 px-6 lg:px-24 xl:px-40">
         <Button variant="outline" size="lg" onClick={() => router.push("/mini-game")}>
           <ArrowLeft className="w-8 h-8 mr-2" />
           Back to Mini-Game Home
         </Button>
       </div>
 
-      <div className="w-full max-w-3xl">
-        <ScenarioContextBar
-          companyCheckText="✔ You are a European Green Tech Co."
-          productCheckText='✔ Product: "Solar Panels"'
-          currentStep={2}
-          totalSteps={3}
-          progressValue={progressValue}
-        />
-      </div>
+      {/* Two-column split for content (stacks on mobile) */}
+      <div className="container mx-auto flex flex-col md:flex-row gap-4 max-w-5xl">
+        {/* Left column: scenario, progress bar, etc. */}
+        <div className="md:w-1/2 flex flex-col justify-start gap-2">
+          <ScenarioContextBar
+            companyCheckText="✔ You are a European Green Tech Co."
+            productCheckText='✔ Product: "Solar Panels"'
+            currentStep={2}
+            totalSteps={3}
+            progressValue={progressValue}
+          />
+        </div>
 
-      {/* Challenge Content */}
-      <div className="w-full max-w-2xl bg-background border border-border/40 rounded p-6">
-        <h1 className="text-2xl font-bold mb-6">Challenge 2: Denied Party Screening</h1>
-        <p className="text-lg mb-4">{question}</p>
+        {/* Right column: challenge question + options */}
+        <div className="md:w-1/2 bg-background border border-border/40 rounded p-6">
+          <div>
+            <h1 className="text-2xl font-bold mb-4">Challenge 2: Denied Party Screening</h1>
+            <p className="text-lg mb-4">{question}</p>
+          </div>
 
-        <ul className="space-y-4">
-          {options.map((option) => (
-            <li key={option.text}>
-              <Button
-                variant={selectedOption === option.text ? "default" : "outline"}
-                size="lg"
-                onClick={() => handleOptionClick(option)}
-                className="w-full text-left"
-                disabled={selectedOption !== null}
-              >
-                {option.text}
-              </Button>
-            </li>
-          ))}
-        </ul>
+          <ul className="space-y-4">
+            {options.map((option) => (
+              <li key={option.text}>
+                <Button
+                  variant={selectedOption === option.text ? "default" : "outline"}
+                  size="lg"
+                  onClick={() => handleOptionClick(option)}
+                  className="w-full text-left"
+                  disabled={selectedOption !== null}
+                >
+                  {option.text}
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

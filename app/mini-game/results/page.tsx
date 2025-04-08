@@ -1,3 +1,4 @@
+//mini-game/results
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -5,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 import { TextAnimate } from "@/components/magicui/text-animate";
+import { Hourglass, CircleDollarSign, Crosshair } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface MiniGameResults {
   answers: {
@@ -20,24 +23,40 @@ export default function ResultsPage() {
   const router = useRouter();
   const [resultsData, setResultsData] = useState<MiniGameResults | null>(null);
 
-  // On mount, load the results from localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedResults = localStorage.getItem("miniGameResults");
+      let data: MiniGameResults | null = null;
+
       if (storedResults) {
         try {
-          const data: MiniGameResults = JSON.parse(storedResults);
-          setResultsData(data);
+          data = JSON.parse(storedResults);
         } catch (err) {
           console.error("Error parsing miniGameResults:", err);
         }
       }
-      // Also remove the start time so the next game will start fresh
+
+      // If data is missing (e.g. due to a timeout), create default results
+      if (!data) {
+        const now = Date.now();
+        data = {
+          answers: {
+            challenge1: { answer: "No Answer", isCorrect: false },
+            challenge2: { answer: "No Answer", isCorrect: false },
+            challenge3: { answer: "No Answer", isCorrect: false },
+          },
+          startTime: now - 120 * 1000, // simulate that the full 120s has passed
+          endTime: now,
+        };
+      }
+
+      setResultsData(data);
+      // Remove start time so next game starts fresh.
       localStorage.removeItem("miniGameStartTime");
     }
   }, []);
 
-  // If no results data, show a loading state or a message.
+  // Still waiting on results? Show a loading indicator.
   if (!resultsData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -46,29 +65,32 @@ export default function ResultsPage() {
     );
   }
 
-  // Calculate derived values
+  // Derived calculations
   const challenges = Object.keys(resultsData.answers);
   const totalChallenges = challenges.length;
   const correctAnswers = challenges.reduce(
-    (acc, key) => acc + (resultsData.answers[key as keyof typeof resultsData.answers].isCorrect ? 1 : 0),
+    (acc, key) =>
+      acc + (resultsData.answers[key as keyof typeof resultsData.answers].isCorrect ? 1 : 0),
     0
   );
   const totalTimeTaken = Math.floor((resultsData.endTime - resultsData.startTime) / 1000);
 
-  // For demonstration: each incorrect answer adds €2000 and 1 day delay.
+  // Penalties: realistic costs/delays per error.
+  const costPerError = 5000; // €5000 fine per error
+  const delayPerError = 3;   // 3 days delay per error
   const penalties = totalChallenges - correctAnswers;
-  const potentialCosts = `€${penalties * 2000}`;
-  const potentialDelay = `${penalties} Day${penalties !== 1 ? "s" : ""} Added`;
+  const formattedCost = new Intl.NumberFormat("de-DE").format(penalties * costPerError);
+  const potentialCosts = `€${formattedCost}`;
+  const potentialDelay = `${penalties * delayPerError} Day${penalties * delayPerError !== 1 ? "s" : ""} Delay`;
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-      {/* Navigation: Back to Home & Restart */}
+      {/* Navigation: Restart the mini-game or return to the main website */}
       <div className="w-full max-w-4xl mb-4 flex justify-between items-center">
         <Button
           variant="outline"
           size="lg"
           onClick={() => {
-            // Clear stored results for a fresh start.
             if (typeof window !== "undefined") {
               localStorage.removeItem("miniGameResults");
               localStorage.removeItem("miniGameStartTime");
@@ -83,21 +105,26 @@ export default function ResultsPage() {
 
       <div className="w-full max-w-3xl bg-background border border-border/40 rounded p-8 shadow-xl">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-6">
-          {`Challenge Complete! Here's Your Compliance Score:`}
+          Challenge Complete! Here&apos;s Your Compliance Score:
         </h1>
 
         <div className="space-y-4 mb-6">
-          <div className="text-lg font-semibold">
+          <div className="text-xl font-semibold flex items-center gap-2">
+            <Crosshair className="w-5 h-5 text-muted-foreground" />
             Accuracy:{" "}
             <span className="text-primary">
               {correctAnswers} out of {totalChallenges} correct
             </span>
           </div>
-          <div className="text-lg font-semibold">
+
+          <div className="text-xl font-semibold flex items-center gap-2">
+            <Hourglass className="w-5 h-5 text-muted-foreground" />
             Total Time Taken:{" "}
             <span className="text-primary">{totalTimeTaken} seconds</span>
           </div>
-          <div className="text-lg font-semibold">
+
+          <div className="text-2xl font-semibold flex items-center gap-2">
+            <CircleDollarSign className="w-6 h-6 text-muted-foreground" />
             Potential Costs/Delays Incurred:{" "}
             <span className="text-primary">
               {potentialCosts}, {potentialDelay}
@@ -110,31 +137,50 @@ export default function ResultsPage() {
           <ul className="space-y-2">
             {challenges.map((challengeKey, idx) => {
               const challenge = resultsData.answers[challengeKey as keyof typeof resultsData.answers];
+              const isCorrect = challenge.isCorrect;
+
               return (
-                <li key={challengeKey} className="text-lg">
-                  <strong>Challenge {idx + 1}:</strong> You selected{" "}
-                  <span className="text-primary">{challenge.answer}</span> –{" "}
-                  {challenge.isCorrect ? (
-                    <span className="text-green-600 font-semibold">Correct</span>
+                <li key={challengeKey} className="text-lg flex items-center gap-3">
+                  {isCorrect ? (
+                    <Badge className="bg-green-800 text-green-100 border border-green-300 w-18">Correct</Badge>
                   ) : (
-                    <span className="text-red-600 font-semibold">Incorrect</span>
+                    <Badge className="bg-red-800 text-red-100 border border-red-300 w-18">Incorrect</Badge>
                   )}
+                  <span>
+                    <strong>Challenge {idx + 1}:</strong> You selected{" "}
+                    <span className="text-primary">{challenge.answer}</span>
+                  </span>
                 </li>
               );
             })}
           </ul>
-          
         </div>
-        <div className="mb-6 mt-12">
-          <TextAnimate animation="fadeIn" by="line" as="p" className="text-xl leading-relaxed">
-            {`The average manual compliance check takes 45 seconds per shipment.
 
-Error rates cause delays of up to 42 days and fines exceeding €10,000.
-
-Our AI-powered system achieves 94% accuracy in just 0.2 seconds, reducing clearance times by up to 83% and saving you significant costs!`}
+        <div className=" mt-12">
+          <TextAnimate
+            animation="fadeIn"
+            by="line"
+            as="p"
+            className="text-l leading-relaxed"
+          >
+            {`Manual compliance checks can be both time-consuming and error-prone—taking on average 45 seconds per shipment. Each oversight not only increases the risk of non-compliance but can also lead to severe financial repercussions.`}
           </TextAnimate>
         </div>
+        <div className="mt-4 p-4 text-xl text-gray-300 border bg-zinc-900 border-gray-600 rounded-xl">
+          Based on your responses, potential errors could cost you an additional {potentialCosts} and delay your shipments by approximately {potentialDelay}.
+        </div>
+
+        <div className="w-full mt-8">
+          <Button
+            size="lg"
+            className="w-full"
+            onClick={() => router.push("/")}
+          >
+            Back to Main Website
+          </Button>
+        </div>
       </div>
+
     </div>
   );
 }

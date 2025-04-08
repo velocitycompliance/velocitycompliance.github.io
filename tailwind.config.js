@@ -1,5 +1,9 @@
 // tailwind.config.js
 module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}", // Adjust if needed
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
     darkMode: 'class', // ✅ Required for class-based dark mode
     theme: {
       extend: {
@@ -21,5 +25,6 @@ module.exports = {
         },
       },
     },
+    plugins: [],
   };
   

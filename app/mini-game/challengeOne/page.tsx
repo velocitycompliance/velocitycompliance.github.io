@@ -75,21 +75,19 @@ export default function ChallengeOnePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-      {/* Back button */}
-      <div className="w-full max-w-4xl mb-4">
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => router.push("/mini-game")}
-        >
-          <ArrowLeft className="w-8 h-8 mr-2" />
-          Back to Mini-Game Home
-        </Button>
-      </div>
+    <div className="min-h-screen flex flex-col">
+    {/* Back button */}
+    <div className="mt-8 mb-8 gap-8 px-6 lg:px-24 xl:px-40">
+      <Button variant="outline" size="lg" onClick={() => router.push("/mini-game")}>
+        <ArrowLeft className="w-8 h-8 mr-2" />
+        Back to Mini-Game Home
+      </Button>
+    </div>
 
-      {/* Scenario & Progress Bar */}
-      <div className="w-full max-w-3xl">
+    {/* Two-column split for content (stacks on mobile) */}
+    <div className="container mx-auto flex flex-col md:flex-row gap-4 max-w-5xl">
+      {/* Left column: scenario, header, question */}
+      <div className="md:w-1/2 flex flex-col justify-start gap-2">
         <ScenarioContextBar
           companyCheckText="✔ You are a European Green Tech Co."
           productCheckText='✔ Product: "Solar Panels"'
@@ -97,13 +95,16 @@ export default function ChallengeOnePage() {
           totalSteps={3}
           progressValue={progressValue}
         />
+
+
       </div>
 
-      {/* Challenge Content */}
-      <div className="w-full max-w-2xl bg-background border border-border/40 rounded p-6">
-        <h1 className="text-2xl font-bold mb-6">Challenge 1: HS/TARIC Code Check</h1>
-        <p className="text-lg mb-4">{question}</p>
-
+      {/* Right column: answer options */}
+      <div className="md:w-1/2 bg-background border border-border/40 rounded p-6">
+      <div>
+          <h1 className="text-2xl font-bold mb-4">Challenge 1: HS/TARIC Code Check</h1>
+          <p className="text-lg mb-4">{question}</p>
+        </div>
         <ul className="space-y-4">
           {options.map((option) => (
             <li key={option.code}>
@@ -121,5 +122,6 @@ export default function ChallengeOnePage() {
         </ul>
       </div>
     </div>
+  </div>
   );
 }
