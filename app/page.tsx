@@ -10,8 +10,10 @@ import SignupForm from "../components/signupForm";
 import Navbar from "../components/navbar";
 import { BlurFade } from "../components/magicui/blur-fade";
 import { AnimatedGridPattern } from "../components/magicui/animated-grid-pattern";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   // Modal state
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => setModalOpen(true);
@@ -215,7 +217,7 @@ export default function Home() {
         <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between gap-8 md:px-12 lg:px-24 xl:px-40">
           <div className="flex flex-col space-y-2">
             <a href="#home" className="hover:text-primary">Home</a>
-            <a href="#features" className="hover:text-primary">Features</a>
+            <a href="#mini-game" className="hover:text-primary"  onClick={() => router.push("/mini-game")}>Mini Game</a>
             <a href="#roi-calculator" className="hover:text-primary">ROI Calculator</a>
             <a href="#why-compliance" className="hover:text-primary">Why Compliance?</a>
             <a href="mailto:velocitycomplianceofficial@gmail.com" className="hover:text-primary">Contact Us</a>
