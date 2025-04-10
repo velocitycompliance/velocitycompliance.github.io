@@ -45,7 +45,7 @@ export default function ResultsPage() {
             challenge2: { answer: "No Answer", isCorrect: false },
             challenge3: { answer: "No Answer", isCorrect: false },
           },
-          startTime: now - 120 * 1000, // simulate that the full 120s has passed
+          startTime: now - 60 * 1000, // simulate that the full 60s has passed
           endTime: now,
         };
       }

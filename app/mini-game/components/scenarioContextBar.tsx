@@ -49,7 +49,7 @@ export function ScenarioContextBar({
     const timer = setInterval(() => {
       const now = Date.now();
       const diffSec = Math.floor((now - gameStartTime) / 1000);
-      const remaining = 120 - diffSec; // e.g. 120s total time
+      const remaining = 60 - diffSec; // e.g. 60s total time
 
       if (remaining > 0) {
         setTimeLeft(remaining);
@@ -83,21 +83,21 @@ export function ScenarioContextBar({
         </AnimatedSpan>
 
         {/* 2) Product Check */}
-        <AnimatedSpan delay={500} className="text-green-500">
+        <AnimatedSpan delay={350} className="text-green-500">
           {productCheckText}
         </AnimatedSpan>
 
         {/* 3) Misstep Warning */}
-        <AnimatedSpan delay={800} className="text-red-500 block mb-2">
+        <AnimatedSpan delay={500} className="text-red-500 block mb-2">
           ✖ Remember: each misstep adds delays & costs!
         </AnimatedSpan>
 
         {/* 4) Time Left with Hourglass Icon */}
         <AnimatedSpan
-          delay={900}
+          delay={700}
           className="text-white-400 text-xl font-bold flex items-center gap-2 mb-4"
         >
-          <Hourglass className="w-6 h-6 animate-[spin_1s_ease-in-out_infinite]" />
+          <Hourglass className="w-6 h-6 animate-[spin_2s_ease-in-out_infinite]" />
           Time Left: {timeLeft}s
         </AnimatedSpan>
       </Terminal>
