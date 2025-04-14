@@ -99,8 +99,8 @@ export default function SignupForm({ onSuccess, ctaText = "Unlock Early Access" 
               <FormLabel>What’s your biggest compliance challenge?</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger textSize="text-m" paddingY="py-6">
-                    <SelectValue textSize="text-m" placeholder="Select a challenge" />
+                  <SelectTrigger textSize="text-l" paddingY="py-6">
+                    <SelectValue textSize="text-l" placeholder="Select a challenge" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>

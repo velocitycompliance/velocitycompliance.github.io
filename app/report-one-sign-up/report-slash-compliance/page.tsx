@@ -1,3 +1,4 @@
+//signup/report-slash-compliance/page.tsx
 "use client";
 
 import React from "react";
@@ -46,7 +47,7 @@ export default function StrategicGuide() {
               The fact is, you have an opportunity to lead. By embracing innovation and strengthening your compliance processes, you can transform customs operations into a powerful advantage that sets you apart in 2025 and beyond.
             </p>
             <Image
-              src="/assets/chart-1.png"
+              src="/assets/reports/chart-1.png"
               alt="Digital Transformation in Trade"
               className="mb-4 w-full object-cover rounded"
               width={800}
@@ -95,7 +96,7 @@ export default function StrategicGuide() {
               Process refinement is equally important. Rather than papering over inefficiencies or forcing employees to reinvent the wheel with each new shipment, a consistent set of operating procedures can streamline each step. Mapping your entire end-to-end workflow often reveals surprising gaps or outdated bottlenecks that can be reengineered. Periodic reviews keep these processes fresh, ensuring that new technologies—like AI classification tools—are woven in effectively rather than tacked on as afterthoughts. 
             </p>
             <Image
-              src="/assets/chart-2.png"
+              src="/assets/reports/chart-2.png"
               alt="Digital Transformation in Trade"
               className="mb-4 w-full object-cover rounded"
               width={800}
@@ -128,7 +129,7 @@ export default function StrategicGuide() {
               The key is to keep your eyes on the prize: a more efficient, future-ready customs operation that doesn’t just check boxes but actively advances your larger business goals. With consistent milestones, cross-functional collaboration, and open minds about technology’s potential, these improvements won’t just streamline your shipping—they’ll reshape how you think about trade at a fundamental level.
             </p>
             <Image
-              src="/assets/chart-3.png"
+              src="/assets/reports/chart-3.png"
               alt="Digital Transformation in Trade"
               className="mb-4 w-full object-cover rounded"
               width={800}
