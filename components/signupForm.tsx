@@ -1,3 +1,4 @@
+//components/signupForm.tsx
 "use client";
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -26,6 +27,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+// Import the custom email validator:
+import { validateEmail } from '../utils/validateEmail';
+
 interface SignupFormProps {
   onSuccess: () => void;
   ctaText?: string;
@@ -33,7 +37,12 @@ interface SignupFormProps {
 
 // Updated schema: add `consent`
 const formSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
+  email: z
+    .string()
+    .trim()
+    .refine((value) => validateEmail(value), {
+      message: "Please enter a valid email address.",
+    }),
   challenge: z.string().nonempty({ message: "Please select a compliance challenge." }),
   consent: z.literal(true, {
     errorMap: () => ({ message: "You must accept the privacy terms." }),
