@@ -265,6 +265,9 @@ export default function Home() {
           <h2 className="scroll-m-20 text-4xl font-medium tracking-tight mb-4 text-left">
             Your Savings. Then Consider the True Value.
           </h2>
+          <p className="text-sm text-muted-foreground text-left mt-4">
+            Estimates based on industry benchmarks. Adjust the sliders to see personalized results.
+          </p>
           <ROICalculator />
           <h3 className="scroll-m-20 text-2xl font-medium tracking-tight text-left mb-4">
             But the real ROI goes deeper:

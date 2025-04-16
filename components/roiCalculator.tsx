@@ -144,7 +144,7 @@ const AmazingROICalculatorWithSliders: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-center mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-center mb-8">
             <div className="border border-border/40 rounded-lg shadow-lg bg-background/50">
               <p className="font-medium text-muted-foreground mb-2">
                 Annual Compliance Cost
@@ -154,7 +154,7 @@ const AmazingROICalculatorWithSliders: React.FC = () => {
               </TypingAnimation>
             </div>
 
-            <div className="border border-border/40 rounded-lg shadow-lg bg-background/50">
+            <div>
               <p className="font-medium text-muted-foreground mb-2">
                 Potential Annual Savings
               </p>
@@ -163,7 +163,7 @@ const AmazingROICalculatorWithSliders: React.FC = () => {
               </TypingAnimation>
             </div>
 
-            <div className="border border-border/40 rounded-lg shadow-lg bg-background/50">
+            <div>
               <p className="font-medium text-muted-foreground mb-2 flex items-center justify-center gap-1">
                 ROI Ratio
                 <ResponsiveHint>
@@ -177,7 +177,7 @@ const AmazingROICalculatorWithSliders: React.FC = () => {
               </TypingAnimation>
             </div>
 
-            <div className="border border-border/40 rounded-lg shadow-lg bg-background/50">
+            <div>
               <p className="font-medium text-muted-foreground mb-2 flex items-center justify-center gap-1">
                 Payback Period
                 <ResponsiveHint>
@@ -192,9 +192,6 @@ const AmazingROICalculatorWithSliders: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-sm text-muted-foreground text-center mt-4">
-            Estimates based on industry benchmarks. Adjust the sliders to see personalized results.
-          </p>
         </div>
       </section>
     </TooltipProvider>
