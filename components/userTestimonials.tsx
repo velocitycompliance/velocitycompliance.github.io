@@ -8,8 +8,11 @@ const reviews = [
   { name: "Anonymous Logistics Lead", username: "Global Mover", body: "A €220K surcharge hit us out of nowhere. Compliance shouldn’t be this risky.", ImageSrc: "/assets/face-3.png" },
   { name: "Anonymous Founder", username: "Startup Hustler", body: "I’d kill for a tool that cuts my clearance times in half.", ImageSrc: "/assets/face-4.png" },
   { name: "Anonymous CFO", username: "Freight Optimizer", body: "We lost €20K last year to compliance penalties. I need certainty, not surprises.", ImageSrc: "/assets/face-5.png" },
-  { name: "Anonymous Operations Manager", username: "Supply Chain Veteran", body: "Chasing down documents and manual entries waste my team's time every day.", ImageSrc: "/assets/face-6.png" },
-];
+  { name: "Sarah Chen, CFO", username: "Expanding Manufacturer", body: "My biggest fear? An M&A deal torpedoed by compliance gaps we didn't see coming. We need proactive visibility, not reactive cleanups.", ImageSrc: "/assets/face-6.png" },
+  { name: "David Rodriguez", username: "Operations Manager, Global Distributor", body: "Freight invoices feel like a lottery – you never know what surcharge is hiding. We recovered €15K last quarter with manual audits, but how much are we still missing?", ImageSrc: "/assets/face-6.png" },
+  { name: "Maria Garcia", username: "Trade Compliance Director, Mid-Market Exporter", body: "My team spends half its time navigating the grey areas and getting buy-in internally. I need a tool that simplifies things AND helps me communicate risk effectively to management.", ImageSrc: "/assets/face-6.png" },
+  { name: "Mike Tippet, COO", username: " Diversified Industrial", body: "We have five different ERPs from acquisitions. Getting a single, reliable view of our compliance status feels impossible. Data chaos is killing our efficiency.", ImageSrc: "/assets/face-6.png" }
+  ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
