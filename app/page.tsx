@@ -452,12 +452,12 @@ export default function Home() {
                 &times;
               </button>
               <h2 className="text-2xl font-bold mb-2 text-left">
-                Join the Waitlist for Early Access
+                Become an early Adopter
               </h2>
               <p className="text-sm text-muted-foreground text-left mb-8">
                 Be the first to transform your compliance process.
               </p>
-              <SignupForm onSuccess={closeModal} ctaText="Join the Waitlist" />
+              <SignupForm onSuccess={closeModal} ctaText="Get Early Access" />
             </div>
           </div>
         )}
