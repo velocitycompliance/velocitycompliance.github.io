@@ -3,16 +3,79 @@ import { Marquee } from "./magicui/marquee";
 import Image from "next/image";
 
 const reviews = [
-  { name: "Anonymous SME Owner", username: "Cross-Border Shipper", body: "Customs delays cost me €50K last quarter alone. I need a faster way.", ImageSrc: "/assets/face-1.jpg" },
-  { name: "Anonymous Exporter", username: "EU Trader", body: "Manual HS code checks take hours—hours I don’t have.", ImageSrc: "/assets/face-2.jpg" },
-  { name: "Anonymous Logistics Lead", username: "Global Mover", body: "A €220K surcharge hit us out of nowhere. Compliance shouldn’t be this risky.", ImageSrc: "/assets/face-3.png" },
-  { name: "Anonymous Founder", username: "Startup Hustler", body: "I’d kill for a tool that cuts my clearance times in half.", ImageSrc: "/assets/face-4.png" },
-  { name: "Anonymous CFO", username: "Freight Optimizer", body: "We lost €20K last year to compliance penalties. I need certainty, not surprises.", ImageSrc: "/assets/face-5.png" },
-  { name: "Sarah Chen, CFO", username: "Expanding Manufacturer", body: "My biggest fear? An M&A deal torpedoed by compliance gaps we didn't see coming. We need proactive visibility, not reactive cleanups.", ImageSrc: "/assets/face-6.png" },
-  { name: "David Rodriguez", username: "Operations Manager, Global Distributor", body: "Freight invoices feel like a lottery – you never know what surcharge is hiding. We recovered €15K last quarter with manual audits, but how much are we still missing?", ImageSrc: "/assets/face-6.png" },
-  { name: "Maria Garcia", username: "Trade Compliance Director, Mid-Market Exporter", body: "My team spends half its time navigating the grey areas and getting buy-in internally. I need a tool that simplifies things AND helps me communicate risk effectively to management.", ImageSrc: "/assets/face-6.png" },
-  { name: "Mike Tippet, COO", username: " Diversified Industrial", body: "We have five different ERPs from acquisitions. Getting a single, reliable view of our compliance status feels impossible. Data chaos is killing our efficiency.", ImageSrc: "/assets/face-6.png" }
-  ];
+  {
+      name: "Jean-Pierre Dubois",
+      username: "Import Operations Manager",
+      body: "Between unpredictable customs delays and those surprise fees, our cash flow is getting crushed. We need a solution that brings speed *and* predictability to our imports.",
+      ImageSrc: "/assets/face-1.jpg"
+  },
+  {
+      name: "Carlos Rodriguez",
+      username: "Trade Compliance Specialist",
+      body: "Manually classifying hundreds of SKUs and keeping up with constant regulatory changes? It's a recipe for errors and delays. We need robust automation to stay competitive.",
+      ImageSrc: "/assets/face-2.jpg"
+  },
+  {
+      name: "Jay Chow",
+      username: "Logistics Director",
+      body: "We got hit with a €150,000 penalty due to a licensing slip-up. The risk exposure is unacceptable. I need proactive tools that give us real-time visibility and control.",
+      ImageSrc: "/assets/face-3.png"
+  },
+  {
+      name: "Mei Lin",
+      username: "Supply Chain Analyst",
+      body: "Compliance complexity is strangling our global expansion plans. Simplifying cross-border trade isn't just about cost savings; it's about unlocking growth.",
+      ImageSrc: "/assets/face-4.png"
+  },
+  {
+      name: "Lena Rybowski",
+      username: "Finance Manager",
+      body: "Our freight invoices are a black box of hidden charges and errors. We're leaving money on the table. I need a system that audits these automatically and recovers our losses.",
+      ImageSrc: "/assets/face-5.png"
+  },
+  {
+      name: "Raj Patel, Head of Legal",
+      username: "Global Manufacturing",
+      body: "In a potential acquisition, uncovering hidden compliance gaps could tank the whole deal. We need comprehensive due diligence tools to assess and mitigate those risks.",
+      ImageSrc: "/assets/face-6.png"
+  },
+  {
+      name: "Stacy Liu, Supply Chain Manager",
+      username: "E-commerce Distributor",
+      body: "We're drowning in paperwork and manual processes. Automation isn't just about efficiency; it's about freeing up our team to focus on strategic growth.",
+      ImageSrc: "/assets/face-7.png"
+  },
+  {
+      name: "Sofia Rossi, Trade Compliance Manager",
+      username: "Pharmaceutical Exporter",
+      body: "Communicating the ROI of compliance to leadership is a constant struggle. We need data-driven tools that demonstrate the value and justify the investment.",
+      ImageSrc: "/assets/face-8.png"
+  },
+  {
+      name: "Isabelle Moreau, Data Security Officer",
+      username: "Diversified Conglomerate",
+      body: "Integrating our patchwork of legacy systems for compliance visibility is a nightmare. We need a solution that can bridge these gaps and provide a single, reliable view.",
+      ImageSrc: "/assets/face-9.png"
+  },
+  {
+      name: "Stanley Peralta, CFO",
+      username: "Auto Parts Manufacturer",
+      body: "Protecting sensitive technical data across our global supply chain is mission-critical. We need granular controls and audit trails to ensure compliance and prevent catastrophic breaches.",
+      ImageSrc: "/assets/face-10.png"
+  },
+  {
+      name: "Jesper Svensson, Training Manager",
+      username: "Automotive Supplier",
+      body: "Keeping our global workforce up-to-date on complex and ever-changing regulations is a huge burden. We need a scalable and engaging training solution that integrates with our workflow.",
+      ImageSrc: "/assets/face-11.png"
+  },
+  {
+      name: "Omar Hassan, Customs Broker",
+      username: "Fashion Importer",
+      body: "Inaccurate classifications are causing costly delays and penalties. We need an AI-powered solution that learns our products and automates classification with pinpoint accuracy.",
+      ImageSrc: "/assets/face-12.png"
+  }
+];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
