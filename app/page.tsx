@@ -8,7 +8,6 @@ import { MarqueeDemo } from "../components/userTestimonials";
 import ROICalculator from "../components/roiCalculator";
 import SignupForm from "../components/signupForm";
 import Navbar from "../components/navbar";
-import PainPoints from "../components/painPoint";
 import { BlurFade } from "../components/magicui/blur-fade";
 import { AnimatedGridPattern } from "../components/magicui/animated-grid-pattern";
 import { useRouter } from "next/navigation";
