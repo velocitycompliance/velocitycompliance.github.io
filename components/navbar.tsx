@@ -24,6 +24,9 @@ const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
       router.push("/mini-game");
     }
   };
+  const handleClickApp = () => {
+    window.open("https://app.velocitycomplianceofficial.workers.dev/signin", "_blank", "noopener,noreferrer");
+  };
 
   return (
     <nav className="flex items-center justify-between px-6 py-4 shadow-sm bg-background sticky top-0 z-50 border-b-1 border-zinc-900 md:px-12 lg:px-24 xl:px-40">
@@ -49,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ openModal }) => {
 
       {/* Action Button */}
       <div className="hidden md:block">
-        <Button variant="outline" onClick={openModal}>
+        <Button variant="outline" onClick={handleClickApp}>
           Get Early Access
         </Button>
       </div>
