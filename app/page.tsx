@@ -65,7 +65,7 @@ export default function Home() {
               Become an Early Adopter &rarr;
             </Button>
             <p className="leading-7 mt-4 text-muted-foreground">
-              Manual list refreshes. US HS only today. Decision support—not legal advice.
+              Manual list refreshes. Decision support—not legal advice.
             </p>
           </div>
 
